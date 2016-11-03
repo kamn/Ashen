@@ -6,7 +6,7 @@
 
 (def fs (nodejs/require "fs"))
 (def strips (nodejs/require "strips"))
-
+(def tracery (nodejs/require "tracery-grammar"))
 
 (def example-domain "(define (domain blocksworld)
   (:requirements :strips)
@@ -25,28 +25,42 @@
     (:goal (and (on a y) (on b y)))
   )")
 
+(def base-grammar
+  (clj->js
+    {:animal ["panda" "fox" "capybara" "iguana"]
+     :emotion ["sad" "happy" "angry" "jealous"]
+     :origin ["I am #emotion.a# #animal#."]}))
+
+(def base-t-grammar (tracery.createGrammar base-grammar))
+(.addModifiers base-t-grammar tracery.baseEngModifiers)
+
 ;; A simple cost function for now
 (defn cost [state]
   10)
 
+;;
 (defn solve-example-problem []
-  (strips.load "strips/example-domain.txt" "strips/example-problem.txt" (fn [domain problem]
-    (let [solutions (strips.solve domain problem cost)]
-      (println (first solutions))))))
+  (strips.load "strips/example-domain.txt" "strips/example-problem.txt"
+    (fn [domain problem]
+       (let [solutions (strips.solve domain problem cost)]
+         (println (first solutions))))))
 
+;;
 (defn write-to-file [novel]
-  (fs.writeFile "novel/ash.txt" novel, (fn [err]
-    (if err
-      (println err)
-      (println "Novel saved!")))))
+  (fs.writeFile "novel/ash.txt" novel,
+    (fn [err]
+      (if err
+        (println err)
+        (println "Novel saved!")))))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
   (let [count 50000
         novel (string/join " " (repeat count "ash"))]
-          (write-to-file novel)
-          (solve-example-problem)
-          (println "Hello, World!")))
+       (println (.flatten base-t-grammar "#origin#"))
+       ;;(write-to-file novel)
+       ;;(solve-example-problem)
+       (println "Hello, World!")))
 
 (set! *main-cli-fn* -main)

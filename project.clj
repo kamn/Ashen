@@ -9,12 +9,12 @@
   :clean-targets ^{:protect false} ["resources"]
 
   :cljsbuild {
-    :builds [{:id "dev"
-              :source-paths ["src"]
-              :compiler {
-                :main ashen.core
-                :output-to "resources/public/js/dev/ashen.js"
-                :output-dir "resources/public/js/dec"
-                :target :nodejs
-                :optimizations :none
-                :source-map true}}]})
+              :builds [{:id "dev"
+                        :source-paths ["src"]
+                        :compiler {
+                                   :main ashen.core
+                                   :output-to "resources/public/js/dev/ashen.js"
+                                   :output-dir "resources/public/js/dec"
+                                   :target :nodejs
+                                   :optimizations :none
+                                   :source-map true}}]})
