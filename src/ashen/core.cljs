@@ -1,6 +1,7 @@
 (ns ashen.core
   (:require [cljs.nodejs :as nodejs]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [ashen.tracery :refer [base-grammar]]))
 
 (nodejs/enable-util-print!)
 
@@ -25,18 +26,17 @@
     (:goal (and (on a y) (on b y)))
   )")
 
-(def base-grammar
-  (clj->js
-    {:animal ["panda" "fox" "capybara" "iguana"]
-     :emotion ["sad" "happy" "angry" "jealous"]
-     :origin ["I am #emotion.a# #animal#."]}))
-
 (def base-t-grammar (tracery.createGrammar base-grammar))
 (.addModifiers base-t-grammar tracery.baseEngModifiers)
 
 ;; A simple cost function for now
 (defn cost [state]
   10)
+
+(defn word-count [s]
+  (-> s
+       (string/split #"\s+")
+       (count)))
 
 ;;
 (defn solve-example-problem []
@@ -47,7 +47,7 @@
 
 ;;
 (defn write-to-file [novel]
-  (fs.writeFile "novel/ash.txt" novel,
+  (fs.writeFile "novel/ash-v2.txt" novel,
     (fn [err]
       (if err
         (println err)
@@ -56,11 +56,17 @@
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (let [count 50000
-        novel (string/join " " (repeat count "ash"))]
+  (let [len 50000
+        novel (string/join " " (repeat len "ash"))]
        (println (.flatten base-t-grammar "#origin#"))
-       ;;(write-to-file novel)
+       (println (word-count "this is a test."))
+       (def potential-story (mapv #(.flatten base-t-grammar "#origin#") (range 0 1500)))
+
+       (println (count potential-story))
+
+       (println (word-count (string/join "\n\n" potential-story)))
+       (write-to-file (string/join "\n\n" potential-story))
        ;;(solve-example-problem)
-       (println "Hello, World!")))
+       (println "")))
 
 (set! *main-cli-fn* -main)
