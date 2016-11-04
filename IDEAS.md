@@ -42,6 +42,28 @@ It also allows multiple character interaction.
 I better find some way of generating Fantasy names.
 https://github.com/konsumer/randopeep.
 
-
 ## Word list
 I need words from some location. I could scrap from Dark Souls I, II and III and Bloodborne.
+
+## STRIPS to Tracery
+Take STRIPS planning then use it to generate lists for Tracery and from there get a somewhat readable sentence.
+This allows follows the previous idea of Function then Beauty.
+
+## Simplification of Actions
+There might be an opportunity for simplification of actions output from STRIPS.
+For example our hero is search a town and houses in a town.
+Instead of...
+"Hero enters an old house. He does not find what he wants. He leaves the house. Hero enters an old house..."
+we could do...
+"Hero searched several house but didn't find anything."
+
+## Asymmetrical stories
+Stories might be more enjoyable if they are Asymmetrical.
+It makes the story slightly unexpected.
+
+## Issue with Strips
+Strips is callback heavy.
+Unfortunately this makes my code more complex.
+I think I am bypass it by loading PEG directly with the grammar being defined in the code.
+Then I think I can just call the strips.solve fn and everything should be happy.
+It would be annoying to use the callbacks maybe core async can help

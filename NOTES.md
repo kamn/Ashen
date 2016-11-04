@@ -6,6 +6,9 @@ http://clojurescript.io/
 
 http://blog.testdouble.com/posts/2016-01-21-isomorphic-clojurescript.html
 
+https://kanaka.github.io/clojurescript/web/synonym.html
+
+http://www.spacjer.com/blog/2014/09/12/clojurescript-javascript-interop/
 ## Nodejs
 http://stackoverflow.com/questions/2496710/writing-files-in-node-js
 
@@ -20,3 +23,31 @@ http://tracery.io/
 
 ### STRIPS
 https://stripsfiddle.herokuapp.com/
+
+
+
+https://github.com/Planeshifter/node-concept-net
+
+### Story Compiler
+https://github.com/dariusk/NaNoGenMo-2015/issues/11#issue-113341430 - TODO: Summary
+https://github.com/catseye/MARYSUE
+https://gist.github.com/cpressey/6324fff6ef0dfdf69b96 - TODO: Summary
+Use of a pipeline and mutations.
+Takes a Start State and an End State then fills in the middle.
+```
+[IntroduceCharacters, *, CharactersConvalesce] => [IntroduceCharacters, [JewelsStolen, *, JewelsRecovered, *], CharactersConvalesce]
+```
+Creates recursively deep trees and flatten to then generate a story
+
+Look into Markov models
+
+https://github.com/dariusk/NaNoGenMo-2015/issues/155 TODO: Summary
+Thick.
+
+
+https://github.com/dariusk/NaNoGenMo-2015/issues/40
+https://web.archive.org/web/20160423170657/http://freezebeam.com/2015/11/nanogenmo-2015-simulationist-fantasy-novel/
+http://freezebeam.com/2015/11/nanogenmo-2015-simulationist-fantasy-novel/
+
+
+https://www.youtube.com/watch?v=ie9Se7FneXE&t=6m40s
