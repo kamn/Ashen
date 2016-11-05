@@ -7,7 +7,7 @@
 (nodejs/enable-util-print!)
 
 (def fs (nodejs/require "fs"))
-(def strips (nodejs/require "strips"))
+(def strips (nodejs/require "strips-sync"))
 (def tracery (nodejs/require "tracery-grammar"))
 
 
@@ -22,13 +22,6 @@
   (-> s
        (string/split #"\s+")
        (count)))
-
-;;
-(defn solve-example-problem []
-  (strips.load "strips/example-domain.txt" "strips/example-problem.txt"
-    (fn [domain problem]
-       (let [solutions (strips.solve domain problem cost)]
-         (println (first solutions))))))
 
 ;;
 (defn write-to-file [novel]
