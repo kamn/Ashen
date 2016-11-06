@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "pegjs": "0.7.0",
+    "random-js": "^1.0.8",
+    "randopeep": "^0.2.5",
     "strips": "0.0.9",
     "strips-sync": "0.0.2",
     "thesaurus-com": "^1.1.3",
