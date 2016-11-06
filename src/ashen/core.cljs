@@ -2,7 +2,8 @@
   (:require [cljs.nodejs :as nodejs]
             [clojure.string :as string]
             [ashen.tracery :refer [base-grammar]]
-            [ashen.strips :refer [solve-simple]]))
+            [ashen.strips :refer [solve-simple solve-simple-ashen]]
+            [ashen.location :refer [random-location-type rand-name gen-location]]))
 
 (nodejs/enable-util-print!)
 
@@ -43,8 +44,18 @@
        (println (word-count (string/join "\n\n" potential-story)))
        ;;(write-to-file (string/join "\n\n" potential-story))
        ;;(solve-example-problem)
-       (def solution (solve-simple))
+       ;;(def solution (solve-simple))
+       ;;(println solution)
+
+       (def solution (aget (solve-simple-ashen) 0))
        (println solution)
+       (println (.-path solution))
+       (println (aget (.-path solution) 0))
+       (println (aget (.-path solution) 0 0))
+
+       (println (random-location-type))
+       (println (rand-name))
+       (println (gen-location))
        ;;(println (.-path (solve-simple)))
        (println "")))
 

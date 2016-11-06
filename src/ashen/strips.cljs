@@ -81,6 +81,27 @@
   (:goal (and (barracks sectorA)))
   )")
 
+(def ashen-example-domain "(define (domain ashen)
+  (:requirements :strips)
+  (:action moveself
+     :parameters (?s ?l1 ?l2)
+     :precondition (and (self ?s) (location ?l1) (location ?l2) (at ?s ?l1) (not (at ?s ?l2)))
+     :effect (and (at ?s ?l2) (not (at ?s ?l1)))))")
+
+
+(def ashen-example-problem "(define (problem move-self)
+     (:domain ashen)
+   (:init (and (self s) (location x) (location y)
+          (at s x) ))
+   (:goal (and (at s y) ))
+ )")
+
+(defn to-words [str]
+  (string/split str #"\s+"))
+
+;;(defn solution-to-sentence [solution])
+
+
 (def global-domain
   {:domain "ashen"
    :requirements :strips
@@ -99,3 +120,6 @@
 
 (defn solve-simple []
   (println (.parseAndSolve strips example-domain2 example-problem2 cost)))
+
+(defn solve-simple-ashen []
+  (.parseAndSolve strips ashen-example-domain ashen-example-problem cost))
