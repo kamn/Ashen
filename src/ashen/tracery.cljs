@@ -25,6 +25,8 @@
 (def desire (.-synonyms (.search tcom "desire")))
 (def move (.-synonyms (.search tcom "move")))
 (def saw (.-synonyms (.search tcom "saw")))
+(def walked (.-synonyms (.search tcom "walked")))
+
 ;;TODO- use the library that can acces thesaurs
 ;;https://github.com/zeke/moby
 
@@ -46,3 +48,12 @@
      :intro-end ["#hero# #saw# the #place# and started to #move# towards it."]
      :story ["#intro# #intro-desc# #intro-emotion# #intro-end#"]
      :origin ["#[hero:#hero-name#][start-place:#place#]story#"]}))
+
+(def walk-base-grammar
+    {:origin ["#agent# #walked# to the #location#."]
+     :walked walked})
+
+(defn gen-on-grammar [grammar]
+  (def t-grammar (tracery.createGrammar (clj->js grammar)))
+  (.addModifiers t-grammar tracery.baseEngModifiers)
+  (.flatten t-grammar "#origin#"))

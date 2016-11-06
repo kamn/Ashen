@@ -1,8 +1,8 @@
 (ns ashen.core
   (:require [cljs.nodejs :as nodejs]
             [clojure.string :as string]
-            [ashen.tracery :refer [base-grammar]]
-            [ashen.strips :refer [solve-simple solve-simple-ashen]]
+            [ashen.tracery :refer [base-grammar gen-on-grammar]]
+            [ashen.strips :refer [solve-simple-ashen step-to-sentence]]
             [ashen.location :refer [random-location-type rand-name gen-location]]))
 
 (nodejs/enable-util-print!)
@@ -37,7 +37,7 @@
   [& args]
   (let [len 50000
         novel (string/join " " (repeat len "ash"))]
-       (def potential-story (mapv #(.flatten base-t-grammar "#origin#") (range 0 1500)))
+       (def potential-story (mapv #(gen-on-grammar base-grammar) (range 0 1500)))
 
        (println (count potential-story))
 
@@ -51,7 +51,9 @@
        (println solution)
        (println (.-path solution))
        (println (aget (.-path solution) 0))
-       (println (aget (.-path solution) 0 0))
+       (def solution-step (aget (.-path solution) 0))
+       (println "step-to-sentence")
+       (println (step-to-sentence solution-step))
 
        (println (random-location-type))
        (println (rand-name))
