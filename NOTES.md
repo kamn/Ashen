@@ -51,3 +51,35 @@ http://freezebeam.com/2015/11/nanogenmo-2015-simulationist-fantasy-novel/
 
 
 https://www.youtube.com/watch?v=ie9Se7FneXE&t=6m40s
+
+
+## Places in Dark Souls
+### Dark souls I
+Northern Unded Asylum
+Firelink Shrine
+Undead Burg
+Undead Parish
+Depths
+Blighttown
+Quelaag's Domain
+The Great Hollow
+Ash Lake
+Sen's Fortress
+Anor Londo
+Painted World of Ariamis
+Darkroot Garden
+Darkroot Basin
+New Londo Ruins
+The Dukes Archives
+Crystal Cave
+Demon Ruins
+Lost Izalith
+The Catacombs
+Tomb of Giants
+Kiln of the first flame
+Sanctuary Garden
+Oolacile sanctuary
+Royal woods
+Oolacile township
+Chasm of the abyss
+Battle of Stoicism
