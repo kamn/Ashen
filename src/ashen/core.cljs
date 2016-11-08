@@ -60,15 +60,25 @@
        (println (rand-name))
        (println (gen-location))
 
-       (println "status-change")
-       (def orig-state (create-agent "Ash" ""))
-       (def ticked-state (tick-agent orig-state))
-       (def mod-state (update-agent ticked-state [:asleep] false))
-       (def mod-state (update-agent mod-state [:location] "Cave"))
+       (println "location-gen")
 
-       (println orig-state)
+       (println "status-change")
+       (def mod-state
+         (-> (create-agent "Ash" "")
+             (tick-agent)
+             (update-agent [:asleep] false)
+             (update-agent [:location] "cave")
+             (update-agent [:desire] :none)))
+
        (println mod-state)
        (println (explain-state-change mod-state))
+       ;;Explain state change
+       ;;Update based on desire
+       ;;plan
+       ;;execute
+       ;;Repeat?
+
+
        ;;(println (.-path (solve-simple)))
        (println "")))
 

@@ -27,6 +27,7 @@
 (def base-status
   {:location ""
    :items []
+   :desire :blank
    :emotions {}
    :asleep true})
 
@@ -60,6 +61,10 @@
 (defn location-change [agent-state status-diff]
   (str (:name agent-state) " was in " (:location status-diff) "."))
 
+(defn desire-change [agent status-diff]
+  (cond
+    (= :none (:desire status-diff)) (str (:name agent) " wants to wander.")))
+
 ;;
 (defn explain-state-change [agent]
   (let [diffd (data/diff (:status agent) (:prev-status agent))
@@ -67,4 +72,5 @@
       (println diff-first)
       (filterv some?
         [(when (contains? diff-first :asleep) (asleep-change agent diff-first))
-         (when (contains? diff-first :location) (location-change agent diff-first))])))
+         (when (contains? diff-first :location) (location-change agent diff-first))
+         (when (contains? diff-first :desire) (desire-change agent diff-first))])))
