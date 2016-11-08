@@ -2,6 +2,7 @@
   (:require [cljs.nodejs :as nodejs]
             [clojure.string :as string]
             [ashen.tracery :refer [base-grammar gen-on-grammar]]
+            [ashen.agent :refer [tick-agent update-agent create-agent explain-state-change]]
             [ashen.strips :refer [solve-simple-ashen step-to-sentence]]
             [ashen.location :refer [random-location-type rand-name gen-location]]))
 
@@ -58,6 +59,16 @@
        (println (random-location-type))
        (println (rand-name))
        (println (gen-location))
+
+       (println "status-change")
+       (def orig-state (create-agent "Ash" ""))
+       (def ticked-state (tick-agent orig-state))
+       (def mod-state (update-agent ticked-state [:asleep] false))
+       (def mod-state (update-agent mod-state [:location] "Cave"))
+
+       (println orig-state)
+       (println mod-state)
+       (println (explain-state-change mod-state))
        ;;(println (.-path (solve-simple)))
        (println "")))
 

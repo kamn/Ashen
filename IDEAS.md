@@ -67,3 +67,37 @@ Unfortunately this makes my code more complex.
 I think I am bypass it by loading PEG directly with the grammar being defined in the code.
 Then I think I can just call the strips.solve fn and everything should be happy.
 It would be annoying to use the callbacks maybe core async can help
+
+## STRIPS Actions
+
+There should be a specific number of actions defined by the global strips domain.
+Maybe the agents will happen upon different actions but we need to have all these actions defined.
+Would be interesting to auto generate actions but maybe another time.
+I have a few planned out.
+"moveself"
+"pickup"
+"putdown"
+
+These are fairly easy. I don't forsee much problem with them.
+
+I would like to do some others though.
+
+"equip"
+"unequip"
+"useitem"
+"attack"
+
+These require some knowledge of the effects on status and auto generation of actions.
+
+
+## Agent Status
+Each agent in the story needs some basic status
+```clojure
+{
+  :name "Agent" ;; Simple enough to explain
+  :location "Cave" ;; Also easy
+  :items [] ;;A lit of items
+  :emotions {} ;;More complex and will have to look into later
+  :status {} ;;More complex
+}
+```
