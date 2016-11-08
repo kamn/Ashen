@@ -83,3 +83,14 @@ Royal woods
 Oolacile township
 Chasm of the abyss
 Battle of Stoicism
+
+
+https://dev.to/tra/structure-in-computer-generated-novels
+"Simulation is definitely a way to produce 'plot' in the sense of events that follow each other with internal consistency, causality, and logic, but it doesn't in any way filter for what would be interesting to a reader. Most things that happen in reality (or any procedural simulation of a subset of reality) is not very interesting from the perspective of a reader of fiction, even things that are potentially very interesting to watch (it's one thing to watch a kung-fu movie, but reading a pokemon-style transcript of the same film's fight scenes would be incredibly boring)."
+
+" I don't think the "many small works" strategy is actually very successful at side-stepping the "boredom problem"... if anything, it might be even harder to read all the way through a list of 500 generated recipes, than through a single generated story of the same length."
+
+Three general types.
+1. Simulations
+2. Story Compilers
+3. Frame Stories
