@@ -12,15 +12,26 @@
   (:action moveself
      :parameters (?s ?l1 ?l2)
      :precondition (and (self ?s) (location ?l1) (location ?l2) (at ?s ?l1) (not (at ?s ?l2)))
-     :effect (and (at ?s ?l2) (not (at ?s ?l1)))))")
+     :effect (and (at ?s ?l2) (not (at ?s ?l1))))
+  (:action investigate
+     :parameters (?s ?l1)
+     :precondition (and (self ?s) (location ?l1) (at ?s ?l1))
+     :effect (and (at ?s ?l1) (knows ?s ?l1))))")
 
 
 (def ashen-example-problem "(define (problem move-self)
      (:domain ashen)
    (:init (and (self Ash) (location forest) (location cave)
           (at Ash forest) ))
-   (:goal (and (at Ash cave) ))
+   (:goal (and (at Ash cave) (not (knows Ash cave))))
  )")
+
+(def ashen-example-problem2 "(define (problem investigate)
+      (:domain ashen)
+    (:init (and (self Ash) (location forest) (location cave)
+           (at Ash forest) ))
+    (:goal (and (knows Ash cave) ))
+  )")
 
 (defn to-words [str]
   (string/split str #"\s+"))
@@ -56,3 +67,6 @@
 
 (defn solve-simple-ashen []
   (.parseAndSolve strips ashen-example-domain ashen-example-problem cost))
+
+(defn solve-simple-ashen2 []
+  (.parseAndSolve strips ashen-example-domain ashen-example-problem2 cost))

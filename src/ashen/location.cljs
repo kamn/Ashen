@@ -30,3 +30,11 @@
   (if (= ((.integer Random 0 1) engine) 0)
     (str loc " of " pname)
     (str pname "'s " loc)))
+
+(defn gen-world-locations []
+  {1 {:type :cave
+      :connected [2]
+      :items []}
+   2 {:type :forest
+      :connected [1]
+      :items [:fire]}})    

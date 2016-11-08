@@ -3,8 +3,8 @@
             [clojure.string :as string]
             [ashen.tracery :refer [base-grammar gen-on-grammar]]
             [ashen.agent :refer [tick-agent update-agent create-agent explain-state-change]]
-            [ashen.strips :refer [solve-simple-ashen step-to-sentence]]
-            [ashen.location :refer [random-location-type rand-name gen-location]]))
+            [ashen.strips :refer [solve-simple-ashen solve-simple-ashen2 step-to-sentence]]
+            [ashen.location :refer [random-location-type rand-name gen-location gen-world-locations]]))
 
 (nodejs/enable-util-print!)
 
@@ -53,6 +53,13 @@
        (println (.-path solution))
        (println (aget (.-path solution) 0))
        (def solution-step (aget (.-path solution) 0))
+
+
+       (def solution2 (aget (solve-simple-ashen2) 0))
+       (println solution2)
+       (println (.-path solution2))
+       (println (aget (.-path solution2) 0))
+       
        (println "step-to-sentence")
        (println (step-to-sentence solution-step))
 
@@ -61,6 +68,8 @@
        (println (gen-location))
 
        (println "location-gen")
+       (println (gen-world-locations))
+
 
        (println "status-change")
        (def mod-state
